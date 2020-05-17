@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t kamalaker2004/fibonacci-test -f ./client/Dockerfile.dev ./client
+  - docker build -t kamalpinnapureddy/fibonacci-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true kamalaker2004/fibonacci-test npm test
+  - docker run -e CI=true kamalpinnapureddy/fibonacci-test npm test
 
 after_success:
-  - docker build -t kamalaker2004/multi-client ./client
-  - docker build -t kamalaker2004/multi-nginx ./nginx
-  - docker build -t kamalaker2004/multi-server ./server
-  - docker build -t kamalaker2004/multi-worker ./worker
+  - docker build -t kamalpinnapureddy/multi-client ./client
+  - docker build -t kamalpinnapureddy/multi-nginx ./nginx
+  - docker build -t kamalpinnapureddy/multi-server ./server
+  - docker build -t kamalpinnapureddy/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
 
-  - docker push kamalaker2004/multi-client
-  - docker push kamalaker2004/multi-nginx
-  - docker push kamalaker2004/multi-server
-  - docker push kamalaker2004/multi-client
+  - docker push kamalpinnapureddy/multi-client
+  - docker push kamalpinnapureddy4/multi-nginx
+  - docker push kamalpinnapureddy/multi-server
+  - docker push kamalpinnapureddy/multi-client
 
   #Take images to docker
 
